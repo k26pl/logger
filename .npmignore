@@ -5,3 +5,4 @@ test
 .swcrc
 tsconfig.json
 .gitignore
+dist/test.js
