@@ -104,6 +104,7 @@ export function stringify_unknown(e: unknown, depth = 0): string {
   else return e + "\n";
 }
 
+let warn=console.warn;
 /**
  * An universal logger for js and ts. 
  *
@@ -115,7 +116,7 @@ export function stringify_unknown(e: unknown, depth = 0): string {
  */
 function createCustomLogger(scope: string,destinations:LogDestination[]):Logger {
   if(destinations.length===0){
-    console.warn("No destinations configured for logger "+scope);
+    warn("No destinations configured for logger "+scope);
   }
   function log(level: Level, scope: string, message: any[]) {
     let d = new Date();
@@ -173,5 +174,16 @@ function createLogger(scope: string):Logger {
   return createCustomLogger(scope,default_destinations)
 }
 
+/**
+ * Replace global console object
+ * This is usefull when e.g. dependencies are using raw console.log, 
+ * and you want to send their logs to configured destinations (file etc.).
+ */
+export function replace_console(dests=default_destinations){
+  let l=createCustomLogger("console",dests)
+  console.log=l.log;
+  console.warn=l.warn;
+  console.error=l.error;
+}
 export default createLogger;
 export { createCustomLogger, createLogger };
