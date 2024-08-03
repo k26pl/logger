@@ -31,6 +31,15 @@ let asyncQueue = {
   },
 };
 
+export function consoleDestination(): LogDestination {
+  return (log) => {
+    let { level } = log;
+    console.log(
+      chalk`{${colors[level]} [${level}] [${time_short(log.timestamp)}] [${log.scope}]}`,
+      ...log.message
+    );
+  };
+}
 export function fileDestination(path: string): LogDestination {
   return (log) => {
     asyncQueue.push(() =>
@@ -44,15 +53,7 @@ export function fileDestination(path: string): LogDestination {
     );
   };
 }
-export function consoleDestination(): LogDestination {
-  return (log) => {
-    let { level } = log;
-    console.log(
-      chalk`{${colors[level]} [${level}] [${time_short(log.timestamp)}] [${log.scope}]}`,
-      ...log.message
-    );
-  };
-}
+
 setDefaultDestinations([consoleDestination()]);
 
 export { createCustomLogger, time_long, time_short, setDefaultDestinations };

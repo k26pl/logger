@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
-        "lib": ["ES2023"]
+        "lib": ["ES2023"],
+        "target":"es2022",
+        "moduleResolution":"bundler",
+        "module":"preserve",
+        
     }
 }

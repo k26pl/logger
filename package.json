@@ -1,6 +1,6 @@
 {
   "name": "@k26pl/logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "repository": {
     "type": "git",
@@ -8,8 +8,9 @@
   },
   "main": "dist/index.js",
   "browser": "dist/browser.js",
+  "types": "dist/browser.d.ts",
   "scripts": {
-    "build_typings":"tsc --emitDeclarationOnly -d && mv src/*.d.ts dist",
+    "build_typings": "tsc --emitDeclarationOnly -d && mv src/*.d.ts dist",
     "build": "cd src && swc -d ../dist . && npm run build_typings",
     "test": "npm run build && node --test dist/test.js"
   },
@@ -22,7 +23,8 @@
   },
   "devDependencies": {
     "@swc/cli": "^0.4.0",
-    "@types/node": "*"
+    "@types/node": "*",
+    "tsc": "^2.0.4"
   },
   "engines": {
     "node": ">=21.0.0"
