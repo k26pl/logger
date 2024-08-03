@@ -61,6 +61,6 @@ export function fileDestination(path: string): LogDestination {
 
 setDefaultDestinations([consoleDestination()]);
 
-export { createCustomLogger, time_long, time_short, setDefaultDestinations };
+export { createCustomLogger, time_long, time_short, setDefaultDestinations, stringify_unknown };
 export type { Level, Log, LogDestination };
 export default createLogger;
