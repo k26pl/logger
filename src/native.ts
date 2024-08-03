@@ -35,11 +35,11 @@ let asyncQueue = {
     }
   },
 };
-
+let console_log=console.log;
 export function consoleDestination(): LogDestination {
   return (log) => {
     let { level } = log;
-    console.log(
+    console_log(
       chalk`{${colors[level]} [${level}] [${time_short(log.timestamp)}] [${log.scope}]}`,
       ...log.message
     );

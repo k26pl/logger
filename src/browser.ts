@@ -14,10 +14,11 @@ import createLogger, {
 } from "./core.js";
 import type { Level, Log, LogDestination } from "./core";
 
+let console_log=console.log;
 export function consoleDestination(): LogDestination {
   return (log) => {
     let { level, scope, timestamp, message } = log;
-    console.log(
+    console_log(
       `%c[${level}] [${time_short(timestamp)}] [${scope}]:%c`,
       `color: ${colors[level]}`,
       "color:white",
@@ -26,8 +27,9 @@ export function consoleDestination(): LogDestination {
   };
 }
 
+let console_error=console.error;
 export function fileDestination(path: string): LogDestination {
-  console.error(
+  console_error(
     "[Logger]: fileDestination is not supported in browser version.\n" +
       "Is your bundler configuration correct?"
   );
