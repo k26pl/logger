@@ -18,9 +18,9 @@ importers:
       '@types/node':
         specifier: '*'
         version: 22.1.0
-      tsc:
-        specifier: ^2.0.4
-        version: 2.0.4
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
 
 packages:
 
@@ -562,8 +562,9 @@ packages:
     resolution: {integrity: sha512-QUHBFTJGdOwmp0tbOG505xAgOp/YliZP/6UgafFXYZ26WT1bvQmSMJUvkeVSASuJJHbqsFbynTvkd5W8RBTipg==}
     engines: {node: '>=12'}
 
-  tsc@2.0.4:
-    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
+  typescript@5.5.4:
+    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   undici-types@6.13.0:
@@ -1093,7 +1094,7 @@ snapshots:
     dependencies:
       escape-string-regexp: 5.0.0
 
-  tsc@2.0.4: {}
+  typescript@5.5.4: {}
 
   undici-types@6.13.0: {}
 
