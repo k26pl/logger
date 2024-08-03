@@ -44,9 +44,9 @@ setDefaultDestinations([consoleDestination(), fileDestination("./my_program.log"
 or for specific logger:
 
 ```js
-import { createCustomLogger, consoleDestination, fileDestination } from "@k26pl/logger";
+import { createLogger, consoleDestination, fileDestination } from "@k26pl/logger";
 
-createCustomLogger("test", [fileDestination("./test_output.log")]);
+createLogger("test", [fileDestination("./test_output.log")]);
 ```
 
 # Custom destinations

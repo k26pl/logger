@@ -104,17 +104,24 @@ export function stringify_unknown(e: unknown, depth = 0): string {
   else return e + "\n";
 }
 
+let default_destinations:LogDestination[]=[];
+
+export function setDefaultDestinations(dests:LogDestination[]){
+  default_destinations=dests;
+}
+
 let warn=console.warn;
 /**
  * An universal logger for js and ts. 
  *
- * The .scope() function allows creation of child loggers
- * Returned functions do not rely on `this`, 
- * so they can be safely used as callbacks.
+ * The .scope() function allows creation of child loggers  
+ * Returned functions do not rely on `this`,  
+ * so they can be safely used as callbacks.  
  * @param scope
+ * @param destinations
  * @returns Logger
  */
-function createCustomLogger(scope: string,destinations:LogDestination[]):Logger {
+function createLogger(scope: string,destinations:LogDestination[]=default_destinations):Logger {
   if(destinations.length===0){
     warn("No destinations configured for logger "+scope);
   }
@@ -131,7 +138,7 @@ function createCustomLogger(scope: string,destinations:LogDestination[]):Logger 
   }
   return {
     scope(sc: string) {
-      return createCustomLogger(scope + ":" + sc,destinations);
+      return createLogger(scope + ":" + sc,destinations);
     },
     info(...a: any) {
       log("info", scope, a);
@@ -148,42 +155,20 @@ function createCustomLogger(scope: string,destinations:LogDestination[]):Logger 
   };
 }
 
-let default_destinations:LogDestination[]=[];
 
-export function setDefaultDestinations(dests:LogDestination[]){
-  default_destinations=dests;
-}
+
+
 
 /**
- * An universal logger for js and ts. 
- * 
- * This is a default logger, that writes output only to console. 
- * You can use createCustomLogger to customize log destinations. 
- *
- * The `.scope()` function allows creation of child loggers.
- * 
- * Returned functions do not rely on `this`, 
- * so they can be safely used as callbacks.
- * 
- * You can customize destinations with `setDefaultDestinations()`, 
- * or on a per-logger basis with `createCustomLogger()`
- * @param scope
- * @returns
- */
-function createLogger(scope: string):Logger {
-  return createCustomLogger(scope,default_destinations)
-}
-
-/**
- * Replace global console object
- * This is usefull when e.g. dependencies are using raw console.log, 
- * and you want to send their logs to configured destinations (file etc.).
+ * Replace global console object  
+ * This is usefull when e.g. dependencies are using raw console.log,  
+ * and you want to send their logs to configured destinations (file etc.).  
  */
 export function replace_console(dests=default_destinations){
-  let l=createCustomLogger("console",dests)
+  let l=createLogger("console",dests)
   console.log=l.log;
   console.warn=l.warn;
   console.error=l.error;
 }
 export default createLogger;
-export { createCustomLogger, createLogger };
+export { createLogger as createCustomLogger, createLogger };
