@@ -80,3 +80,8 @@ export function myDestination(my_arg: string): LogDestination {
   };
 }
 ```
+
+# Replace console
+You can use ``replace_console()`` to replace ``info``, ``log``, ``warn`` and ``error``  
+on global ``console`` object. This is useful when dependencies are using raw console, 
+and you want to redirect their output somewhere.

@@ -169,6 +169,7 @@ export function replace_console(dests=default_destinations){
   console.log=l.log;
   console.warn=l.warn;
   console.error=l.error;
+  console.info=l.info;
 }
 export default createLogger;
 export { createLogger as createCustomLogger, createLogger };

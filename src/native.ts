@@ -11,6 +11,7 @@ import createLogger, {
   stringify_unknown,
   setDefaultDestinations,
   createCustomLogger,
+  replace_console
 } from "./core.js";
 import type { Level, Log, LogDestination } from "./core";
 import { appendFile } from "node:fs/promises";
@@ -61,6 +62,6 @@ export function fileDestination(path: string): LogDestination {
 
 setDefaultDestinations([consoleDestination()]);
 
-export { createCustomLogger, time_long, time_short, setDefaultDestinations, stringify_unknown };
+export { createCustomLogger, time_long, time_short, setDefaultDestinations, stringify_unknown, replace_console };
 export type { Level, Log, LogDestination };
 export default createLogger;

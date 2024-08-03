@@ -10,7 +10,8 @@ import createLogger, {
   colors,
   setDefaultDestinations,
   createCustomLogger,
-  stringify_unknown
+  stringify_unknown,
+  replace_console,
 } from "./core.js";
 import type { Level, Log, LogDestination } from "./core";
 
@@ -38,6 +39,6 @@ export function fileDestination(path: string): LogDestination {
 
 setDefaultDestinations([consoleDestination()]);
 
-export { createCustomLogger, time_long, time_short, setDefaultDestinations, stringify_unknown };
+export { createCustomLogger, time_long, time_short, setDefaultDestinations, stringify_unknown, replace_console };
 export type { Level, Log, LogDestination };
 export default createLogger;
