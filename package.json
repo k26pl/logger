@@ -1,6 +1,6 @@
 {
   "name": "@k26pl/logger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "repository": {
     "type": "git",
@@ -9,7 +9,8 @@
   "main": "dist/index.js",
   "browser": "dist/browser.js",
   "scripts": {
-    "build": "cd src && swc -d ../dist .",
+    "build_typings":"tsc --emitDeclarationOnly -d && mv src/*.d.ts dist",
+    "build": "cd src && swc -d ../dist . && npm run build_typings",
     "test": "npm run build && node --test dist/test.js"
   },
   "keywords": [],
