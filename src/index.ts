@@ -13,7 +13,7 @@ import createLogger, {
   createCustomLogger,
   replace_console
 } from "./core.js";
-import type { Level, Log, LogDestination } from "./core";
+import type { Level, Log, LogDestination } from "./core.js";
 import { appendFile } from "node:fs/promises";
 
 let asyncQueue = {

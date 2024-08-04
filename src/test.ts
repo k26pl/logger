@@ -4,7 +4,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 import { stringify_unknown } from "./core.js";
-import { fileDestination } from "./native.js";
+import { fileDestination } from "./index.js";
 import { test } from "node:test";
 import { rm, readFile, mkdir } from "node:fs/promises";
 import { ok } from "node:assert";
