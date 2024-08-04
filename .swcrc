@@ -9,6 +9,9 @@
     "parser": {
       "syntax": "typescript"
     },
-    "preserveAllComments": true
+    "preserveAllComments": true,
+    "minify": {
+      "inlineSourcesContent": false
+    }
   }
 }
