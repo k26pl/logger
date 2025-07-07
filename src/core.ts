@@ -90,7 +90,7 @@ export function stringify_unknown(e: unknown, depth = 0): string {
         */
     if (e instanceof Error) {
       return (
-        (e.stack || `${e.name}: ${e.message}`)
+        `${e.name}: ${e.message}${e.stack?"\n"+e.stack:""}`
           .replaceAll("\n", "\n   ")
           .replace(/   $/, "") + "\n"
       );
