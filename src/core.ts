@@ -101,8 +101,8 @@ export function stringify_unknown(e: unknown, depth = 0): string {
   else if (typeof e == "symbol") {
     return e.toString() + "\n";
   }
-  // other types can be jut converted to string
-  //this way also works with undefined
+  // other types can be just converted to string
+  // this way also works with undefined
   else return e + "\n";
 }
 
