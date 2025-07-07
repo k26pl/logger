@@ -17,7 +17,6 @@
   "keywords": [],
   "author": "k26",
   "license": "MPL-2.0",
-  "packageManager": "pnpm@9.1.4+sha1.2432063d815cfa88fd9fef1d85a445e3f609851d",
   "dependencies": {
     "chalk-template": "^1.1.0"
   },
