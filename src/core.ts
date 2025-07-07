@@ -24,6 +24,7 @@ export type Logger={
   log(...a: any):void,
   warn(...a: any):void,
   error(...a: any):void,
+  _raw_log(level: Level, message: any[],timestamp?: Date) 
 }
 export const time_short = (d: Date) =>
   `${d.getHours().toString().padStart(2, "0")}:${d
@@ -125,13 +126,13 @@ function createLogger(scope: string,destinations:LogDestination[]=default_destin
   if(destinations.length===0){
     warn("No destinations configured for logger "+scope);
   }
-  function log(level: Level, scope: string, message: any[]) {
-    let d = new Date();
+  function raw_log(level: Level, message: any[],timestamp=new Date()) {
+    
     destinations.forEach(dest=>{
       dest({
         level,
         scope,
-        timestamp:d,
+        timestamp,
         message
       })
     })
@@ -141,17 +142,18 @@ function createLogger(scope: string,destinations:LogDestination[]=default_destin
       return createLogger(scope + ":" + sc,destinations);
     },
     info(...a: any) {
-      log("info", scope, a);
+      raw_log("info", a);
     },
     log(...a: any) {
-      log("log", scope, a);
+      raw_log("log", a);
     },
     warn(...a: any) {
-      log("warn", scope, a);
+      raw_log("warn", a);
     },
     error(...a: any) {
-      log("error", scope, a);
+      raw_log("error", a);
     },
+    _raw_log:raw_log
   };
 }
 
