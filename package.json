@@ -11,8 +11,8 @@
   "types": "dist/browser.d.ts",
   "scripts": {
     "build_typings": "tsc --emitDeclarationOnly -d && mv src/*.d.ts dist",
-    "build": "cd src && swc --config-file ../.swcrc -d ../dist . && npm run build_typings",
-    "test": "npm run build && node --test dist/test.js"
+    "build": "cd src && swc --config-file ../.swcrc -d ../dist . && pnpm run build_typings",
+    "test": "pnpm run build && node --test dist/test.js"
   },
   "keywords": [],
   "author": "k26",

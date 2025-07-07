@@ -25,18 +25,21 @@ test("fileDestination", async () => {
     level: "log",
     scope: "test",
     message: ["========================", "start"],
+    filename:"",
   });
   dest({
     timestamp: new Date(),
     level: "log",
     scope: "test",
     message: [],
+    filename:"",
   });
   dest({
     timestamp: new Date(),
     level: "log",
     scope: "test",
     message: ["Helo world!"],
+    filename:"",
   });
   dest({
     timestamp: new Date(),
@@ -56,12 +59,14 @@ test("fileDestination", async () => {
         },
       },
     ],
+    filename:"",
   });
   dest({
     timestamp: new Date(),
     level: "log",
     scope: "test",
     message: "abcdefghijkl".split(""),
+    filename:"",
   });
   dest({
     timestamp: new Date(),
@@ -77,12 +82,14 @@ test("fileDestination", async () => {
         [5, 6, 62],
       ],
     ],
+    filename:"",
   });
   dest({
     timestamp: new Date(),
     level: "log",
     scope: "test",
     message: [{}, {}, {}],
+    filename:"",
   });
   await delay(1);
   let contents = await readFile("./test/fd.log");

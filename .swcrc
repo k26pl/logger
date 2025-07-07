@@ -1,7 +1,8 @@
 {
   "$schema": "https://swc.rs/schema.json",
   "module": {
-    "type": "es6"
+    "type": "es6",
+    "resolveFully": true
   },
   "jsc": {
     "target": "es2022",
