@@ -25,7 +25,7 @@ export type Logger={
   log(...a: any):void,
   warn(...a: any):void,
   error(...a: any):void,
-  _raw_log(level: Level, message: any[],timestamp?: Date) 
+  _raw_log(level: Level, message: any[],timestamp?: Date, filename?:string): void 
 }
 export const time_short = (d: Date) =>
   `${d.getHours().toString().padStart(2, "0")}:${d
