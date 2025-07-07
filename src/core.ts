@@ -9,6 +9,7 @@ export type Log = {
   timestamp: Date;
   scope: string;
   message: any[];
+  filename:string;
 };
 export type LogDestination = (log: Log) => void;
 export let colors: Record<Level, string> = {
@@ -126,14 +127,15 @@ function createLogger(scope: string,destinations:LogDestination[]=default_destin
   if(destinations.length===0){
     warn("No destinations configured for logger "+scope);
   }
-  function raw_log(level: Level, message: any[],timestamp=new Date()) {
+  function raw_log(level: Level, message: any[],timestamp=new Date(),filename="") {
     
     destinations.forEach(dest=>{
       dest({
         level,
         scope,
         timestamp,
-        message
+        message,
+        filename
       })
     })
   }
